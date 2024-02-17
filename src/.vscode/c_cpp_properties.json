@@ -1,0 +1,30 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/opt/ros/humble/include/**",
+        "/home/sundharvs/ros2_ws/src/NIST_DLIO/include/**",
+        "/home/sundharvs/ros2_ws/src/NIST_SLAM/include/**",
+        "/home/sundharvs/ros2_ws/src/informed_rrt/include/**",
+        "/home/sundharvs/ros2_ws/src/path_planner/include/**",
+        "/home/sundharvs/ros2_ws/src/perception_pcl/pcl_conversions/include/**",
+        "/home/sundharvs/ros2_ws/src/perception_pcl/pcl_ros/include/**",
+        "/home/sundharvs/ros2_ws/src/px4_ros_com/include/**",
+        "/home/sundharvs/ros2_ws/src/ros_gz/ros_gz_bridge/include/**",
+        "/home/sundharvs/ros2_ws/src/ros_gz/ros_gz_sim/include/**",
+        "/home/sundharvs/ros2_ws/src/slam_path/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}
