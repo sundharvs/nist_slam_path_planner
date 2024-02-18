@@ -84,12 +84,12 @@ public:
         // set the bounds for the R^3
         ob::RealVectorBounds bounds(3);
 
-        bounds.setLow(0,-20);
-        bounds.setHigh(0,20);
-        bounds.setLow(1,-20);
-        bounds.setHigh(1,20);
-        bounds.setLow(2,-10);
-        bounds.setHigh(2,10);
+        bounds.setLow(0,-10);
+        bounds.setHigh(0,10);
+        bounds.setLow(1,-10);
+        bounds.setHigh(1,10);
+        bounds.setLow(2,-3);
+        bounds.setHigh(2,3);
 
         space->as<ob::SE3StateSpace>()->setBounds(bounds);
 
@@ -127,6 +127,7 @@ public:
 
         // set Optimizattion objective
         pdef->setOptimizationObjective(getPathLengthObjWithCostToGo(si));
+
         RCLCPP_INFO(this->get_logger(), "Planner Initialized");
     }
 
@@ -158,12 +159,22 @@ public:
             prev_goal[2] = z;
             goal->as<ob::SO3StateSpace::StateType>(1)->setIdentity();
 
+            ob::State *state =  space->allocState();
+	        state->as<ob::SE3StateSpace::StateType>()->setXYZ(goal->getX(), goal->getY(), goal->getZ());
+            state->as<ob::SE3StateSpace::StateType>()->rotation().w = goal->rotation().w;
+            state->as<ob::SE3StateSpace::StateType>()->rotation().x = goal->rotation().x;
+            state->as<ob::SE3StateSpace::StateType>()->rotation().y = goal->rotation().y;
+            state->as<ob::SE3StateSpace::StateType>()->rotation().z = goal->rotation().z;
 
-            pdef->clearGoal();
-            pdef->setGoalState(goal);
-            RCLCPP_INFO_STREAM(this->get_logger(), "Goal point set to: " << x << " " << y << " " << z);
-            if(set_start){
-                plan();
+            if(isStateValid(state)){    
+                pdef->clearGoal();
+                pdef->setGoalState(goal);
+                RCLCPP_INFO_STREAM(this->get_logger(), "Goal point set to: " << x << " " << y << " " << z);
+                if(set_start){
+                    plan();
+                }
+            } else {
+                RCLCPP_INFO_STREAM(this->get_logger(), "Goal point invalid");
             }
         }
     }
@@ -212,11 +223,14 @@ public:
 	    // perform setup steps for the planner
 		plan->setup();
 
+        plan->printProperties(std::cout);
+        plan->printSettings(std::cout);
+
 	    // print the settings for this space
-		si->printSettings(std::cout);
+		// si->printSettings(std::cout);
 
 	    // print the problem settings
-		pdef->print(std::cout);
+		// pdef->print(std::cout);
 
 	    // attempt to solve the problem within one second of planning time
 		ob::PlannerStatus solved = plan->solve(2);
