@@ -23,3 +23,13 @@ range = 6.09689
 rewire_factor = 1.1
 use_k_nearest = 1
 ```
+
+Usage:
+```
+ros2 bag play december_test_0.db3
+source install/setup.sh
+ros2 launch direct_lidar_inertial_odometry dlio.launch.py rviz:=true pointcloud_topic:=/ouster/points imu_topic:=/imu/data
+ros2 run nist_slam_path_planner planner  
+```
+Add the "plan_path" topic in Rviz
+Use the goal pose selection tool in Rviz
