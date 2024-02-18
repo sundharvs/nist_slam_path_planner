@@ -1,0 +1,88 @@
+[0.072s] Invoking command in '/home/sundharvs/ros2_ws/src/slam_path/build/slam_path': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/sundharvs/ros2_ws/src/slam_path -DCMAKE_INSTALL_PREFIX=/home/sundharvs/ros2_ws/src/slam_path/install/slam_path
+[0.145s] -- The C compiler identification is GNU 11.4.0
+[0.196s] -- The CXX compiler identification is GNU 11.4.0
+[0.211s] -- Detecting C compiler ABI info
+[0.273s] -- Detecting C compiler ABI info - done
+[0.282s] -- Check for working C compiler: /usr/lib/ccache/cc - skipped
+[0.282s] -- Detecting C compile features
+[0.283s] -- Detecting C compile features - done
+[0.287s] -- Detecting CXX compiler ABI info
+[0.353s] -- Detecting CXX compiler ABI info - done
+[0.361s] -- Check for working CXX compiler: /usr/lib/ccache/c++ - skipped
+[0.361s] -- Detecting CXX compile features
+[0.362s] -- Detecting CXX compile features - done
+[0.366s] -- Found ament_cmake: 1.3.6 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.530s] -- Found Python3: /usr/bin/python3.10 (found version "3.10.12") found components: Interpreter 
+[0.614s] -- Found rclcpp: 16.0.7 (/opt/ros/humble/share/rclcpp/cmake)
+[0.671s] -- Found rosidl_generator_c: 3.1.5 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.677s] -- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.686s] -- Found rosidl_generator_cpp: 3.1.5 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.701s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.721s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.795s] -- Found rmw_implementation_cmake: 6.1.1 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.798s] -- Found rmw_fastrtps_cpp: 6.2.5 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[0.906s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[0.937s] -- Found FastRTPS: /opt/ros/humble/include  
+[0.988s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.000s] -- Looking for pthread.h
+[1.089s] -- Looking for pthread.h - found
+[1.089s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[1.166s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[1.167s] -- Found Threads: TRUE  
+[1.300s] -- Found octomap_msgs: 2.0.0 (/opt/ros/humble/share/octomap_msgs/cmake)
+[1.408s] -- Found nav_msgs: 4.2.3 (/opt/ros/humble/share/nav_msgs/cmake)
+[1.479s] -- Found visualization_msgs: 4.2.3 (/opt/ros/humble/share/visualization_msgs/cmake)
+[1.653s] -- Found trajectory_msgs: 4.2.3 (/opt/ros/humble/share/trajectory_msgs/cmake)
+[1.731s] -- Found ompl: /opt/ros/humble/include/ompl-1.6;/usr/include;/usr/include/eigen3  
+[1.737s] -- Found ament_lint_auto: 0.12.9 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[1.824s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[1.824s] -- Configured cppcheck include dirs: /home/sundharvs/ros2_ws/src/slam_path/include/slam_path;/home/sundharvs/ros2_ws/src/slam_path/ccd;/home/sundharvs/ros2_ws/src/slam_path/ode
+[1.824s] -- Configured cppcheck exclude dirs and/or files: 
+[1.832s] -- Added test 'lint_cmake' to check CMake code style
+[1.851s] -- Added test 'uncrustify' to check C / C++ code style
+[1.851s] -- Configured uncrustify additional arguments: 
+[1.854s] -- Added test 'xmllint' to check XML markup files
+[1.856s] -- Configuring done
+[1.866s] -- Generating done
+[1.868s] -- Build files have been written to: /home/sundharvs/ros2_ws/src/slam_path/build/slam_path
+[1.876s] Invoked command in '/home/sundharvs/ros2_ws/src/slam_path/build/slam_path' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/sundharvs/ros2_ws/src/slam_path -DCMAKE_INSTALL_PREFIX=/home/sundharvs/ros2_ws/src/slam_path/install/slam_path
+[1.878s] Invoking command in '/home/sundharvs/ros2_ws/src/slam_path/build/slam_path': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/sundharvs/ros2_ws/src/slam_path/build/slam_path -- -j8 -l8
+[1.920s] [ 50%] [32mBuilding CXX object CMakeFiles/planner.dir/src/path_planner.cpp.o[0m
+[19.776s] [01m[Kcc1plus:[m[K [01;35m[Kwarning: [m[K/opt/ros/humble/lib/x86_64-linux-gnu/libompl.so: not a directory
+[19.776s] [01m[Kcc1plus:[m[K [01;35m[Kwarning: [m[K/usr/lib/x86_64-linux-gnu/libboost_serialization.so: not a directory
+[19.776s] [01m[Kcc1plus:[m[K [01;35m[Kwarning: [m[K/usr/lib/x86_64-linux-gnu/libboost_filesystem.so: not a directory
+[19.776s] [01m[Kcc1plus:[m[K [01;35m[Kwarning: [m[K/usr/lib/x86_64-linux-gnu/libboost_system.so: not a directory
+[19.776s] [01m[K/home/sundharvs/ros2_ws/src/slam_path/src/path_planner.cpp:[m[K In member function ‘[01m[Kbool Planner::replan()[m[K’:
+[19.776s] [01m[K/home/sundharvs/ros2_ws/src/slam_path/src/path_planner.cpp:204:20:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kdistance[m[K’ [[01;35m[K-Wunused-variable[m[K]
+[19.776s]   204 |             double [01;35m[Kdistance[m[K;
+[19.776s]       |                    [01;35m[K^~~~~~~~[m[K
+[19.776s] [01m[K/home/sundharvs/ros2_ws/src/slam_path/src/path_planner.cpp:[m[K In member function ‘[01m[Kvoid Planner::odom_callback(nav_msgs::msg::Odometry_<std::allocator<void> >::SharedPtr)[m[K’:
+[19.776s] [01m[K/home/sundharvs/ros2_ws/src/slam_path/src/path_planner.cpp:421:65:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kodom_msg[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[19.776s]   421 |     void odom_callback([01;35m[Kconst nav_msgs::msg::Odometry::SharedPtr odom_msg[m[K)
+[19.777s]       |                        [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~[m[K
+[19.790s] [100%] [32m[1mLinking CXX executable planner[0m
+[20.856s] [100%] Built target planner
+[20.865s] Invoked command in '/home/sundharvs/ros2_ws/src/slam_path/build/slam_path' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/sundharvs/ros2_ws/src/slam_path/build/slam_path -- -j8 -l8
+[20.895s] Invoking command in '/home/sundharvs/ros2_ws/src/slam_path/build/slam_path': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/sundharvs/ros2_ws/src/slam_path/build/slam_path
+[20.901s] -- Install configuration: ""
+[20.902s] -- Installing: /home/sundharvs/ros2_ws/src/slam_path/install/slam_path/lib/slam_path/planner
+[20.908s] -- Set runtime path of "/home/sundharvs/ros2_ws/src/slam_path/install/slam_path/lib/slam_path/planner" to ""
+[20.908s] -- Installing: /home/sundharvs/ros2_ws/src/slam_path/install/slam_path/include
+[20.908s] -- Installing: /home/sundharvs/ros2_ws/src/slam_path/install/slam_path/include/slam_path
+[20.908s] -- Installing: /home/sundharvs/ros2_ws/src/slam_path/install/slam_path/share/ament_index/resource_index/package_run_dependencies/slam_path
+[20.908s] -- Installing: /home/sundharvs/ros2_ws/src/slam_path/install/slam_path/share/ament_index/resource_index/parent_prefix_path/slam_path
+[20.908s] -- Installing: /home/sundharvs/ros2_ws/src/slam_path/install/slam_path/share/slam_path/environment/ament_prefix_path.sh
+[20.908s] -- Installing: /home/sundharvs/ros2_ws/src/slam_path/install/slam_path/share/slam_path/environment/ament_prefix_path.dsv
+[20.909s] -- Installing: /home/sundharvs/ros2_ws/src/slam_path/install/slam_path/share/slam_path/environment/path.sh
+[20.909s] -- Installing: /home/sundharvs/ros2_ws/src/slam_path/install/slam_path/share/slam_path/environment/path.dsv
+[20.909s] -- Installing: /home/sundharvs/ros2_ws/src/slam_path/install/slam_path/share/slam_path/local_setup.bash
+[20.909s] -- Installing: /home/sundharvs/ros2_ws/src/slam_path/install/slam_path/share/slam_path/local_setup.sh
+[20.909s] -- Installing: /home/sundharvs/ros2_ws/src/slam_path/install/slam_path/share/slam_path/local_setup.zsh
+[20.909s] -- Installing: /home/sundharvs/ros2_ws/src/slam_path/install/slam_path/share/slam_path/local_setup.dsv
+[20.909s] -- Installing: /home/sundharvs/ros2_ws/src/slam_path/install/slam_path/share/slam_path/package.dsv
+[20.909s] -- Installing: /home/sundharvs/ros2_ws/src/slam_path/install/slam_path/share/ament_index/resource_index/packages/slam_path
+[20.909s] -- Installing: /home/sundharvs/ros2_ws/src/slam_path/install/slam_path/share/slam_path/cmake/ament_cmake_export_include_directories-extras.cmake
+[20.910s] -- Installing: /home/sundharvs/ros2_ws/src/slam_path/install/slam_path/share/slam_path/cmake/slam_pathConfig.cmake
+[20.910s] -- Installing: /home/sundharvs/ros2_ws/src/slam_path/install/slam_path/share/slam_path/cmake/slam_pathConfig-version.cmake
+[20.910s] -- Installing: /home/sundharvs/ros2_ws/src/slam_path/install/slam_path/share/slam_path/package.xml
+[20.912s] Invoked command in '/home/sundharvs/ros2_ws/src/slam_path/build/slam_path' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/sundharvs/ros2_ws/src/slam_path/build/slam_path

@@ -1,0 +1,6 @@
+Invoking command in '/home/sundharvs/ros2_ws/src/slam_path/build/slam_path': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/sundharvs/ros2_ws/src/slam_path -DCMAKE_INSTALL_PREFIX=/home/sundharvs/ros2_ws/src/slam_path/install/slam_path
+Invoked command in '/home/sundharvs/ros2_ws/src/slam_path/build/slam_path' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/sundharvs/ros2_ws/src/slam_path -DCMAKE_INSTALL_PREFIX=/home/sundharvs/ros2_ws/src/slam_path/install/slam_path
+Invoking command in '/home/sundharvs/ros2_ws/src/slam_path/build/slam_path': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/sundharvs/ros2_ws/src/slam_path/build/slam_path -- -j8 -l8
+Invoked command in '/home/sundharvs/ros2_ws/src/slam_path/build/slam_path' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/sundharvs/ros2_ws/src/slam_path/build/slam_path -- -j8 -l8
+Invoking command in '/home/sundharvs/ros2_ws/src/slam_path/build/slam_path': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/sundharvs/ros2_ws/src/slam_path/build/slam_path
+Invoked command in '/home/sundharvs/ros2_ws/src/slam_path/build/slam_path' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/sundharvs/ros2_ws/src/slam_path/build/slam_path
