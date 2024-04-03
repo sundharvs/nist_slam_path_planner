@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(slam_path)
+project(nist_slam_path_planner)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -11,6 +11,7 @@ find_package(rclcpp REQUIRED)
 find_package(octomap_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(nav_msgs REQUIRED)
+find_package(px4_msgs REQUIRED)
 find_package(visualization_msgs REQUIRED)
 find_package(trajectory_msgs REQUIRED)
 find_package(fcl REQUIRED)
@@ -39,12 +40,16 @@ if(BUILD_TESTING)
 endif()
 
 add_executable(planner src/path_planner.cpp)
+add_executable(offboard_control src/offboard_control.cpp)
 ament_target_dependencies(planner rclcpp octomap_msgs nav_msgs geometry_msgs visualization_msgs trajectory_msgs fcl ompl Eigen3 CCD)
+ament_target_dependencies(offboard_control rclcpp px4_msgs geometry_msgs nav_msgs Eigen3)
+
 include_directories(${CCD_LIBRARIES} ${OMPL_LIBRARIES})
 target_link_libraries (planner Eigen3::Eigen ${CCD_LIBRARIES} ${OMPL_LIBRARIES} fcl)
 
 install(TARGETS
 planner
+offboard_control
 DESTINATION lib/${PROJECT_NAME}
 )
 

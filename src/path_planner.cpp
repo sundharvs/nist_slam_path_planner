@@ -57,17 +57,18 @@ public:
             "octomap_full",10,std::bind(&Planner::octomap_callback, this, _1)
         );
         goal_subscription = this->create_subscription<geometry_msgs::msg::PoseStamped>(
-            "move_base_simple/goal",1, std::bind(&Planner::goal_callback, this, _1)
+            "/goal_pose",1, std::bind(&Planner::goal_callback, this, _1)
         );
         odom_subscription = this->create_subscription<nav_msgs::msg::Odometry>(
-            "dlio/odom_node/odom", 10, std::bind(&Planner::odom_callback, this, _1)
+            "/nav/odom_incremental", rclcpp::QoS(rclcpp::KeepLast(1)).best_effort().durability_volatile(), std::bind(&Planner::odom_callback, this, _1)
         );
+
         start_subscription = this->create_subscription<geometry_msgs::msg::PointStamped>(
             "/clicked_point", 10, std::bind(&Planner::start_callback, this, _1)
         );
         vis_pub = this->create_publisher<visualization_msgs::msg::Marker>("visualization_marker", 10);
         traj_pub = this->create_publisher<trajectory_msgs::msg::MultiDOFJointTrajectory>("waypoints", 10);
-        path_pub = this->create_publisher<nav_msgs::msg::Path>("plan_path", 10);
+        path_pub = this->create_publisher<nav_msgs::msg::Path>("path", 10);
 
         Quadcopter = std::shared_ptr<fcl::CollisionGeometry<double>>(new fcl::Box<double>(0.5, 0.5, 0.5));
         fcl::OcTree<double>* tree = new fcl::OcTree<double>(std::shared_ptr<const octomap::OcTree>(new octomap::OcTree(0.1)));
@@ -200,7 +201,6 @@ public:
 						replan_flag = !isStateValid(path_smooth->getState(idx));
 					else
 						break;
-
 				}
 				if(replan_flag)
 					plan();
@@ -227,10 +227,10 @@ public:
         plan->printSettings(std::cout);
 
 	    // print the settings for this space
-		// si->printSettings(std::cout);
+		si->printSettings(std::cout);
 
 	    // print the problem settings
-		// pdef->print(std::cout);
+		pdef->print(std::cout);
 
 	    // attempt to solve the problem within one second of planning time
 		ob::PlannerStatus solved = plan->solve(2);
@@ -249,7 +249,7 @@ public:
 			trajectory_msgs::msg::MultiDOFJointTrajectoryPoint point_msg;
 
 			msg.header.stamp = this->now();
-			msg.header.frame_id = "odom";
+			msg.header.frame_id = "map";
 			msg.joint_names.clear();
 			msg.points.clear();
 			msg.joint_names.push_back("Quadcopter");
@@ -307,7 +307,7 @@ public:
 	            // extract the second component of the state and cast it to what we expect
 				const ob::SO3StateSpace::StateType *rot = se3state->as<ob::SO3StateSpace::StateType>(1);
 				
-				marker.header.frame_id = "odom";
+				marker.header.frame_id = "map";
 				marker.header.stamp = this->now();
 				marker.ns = "path";
 				marker.id = idx;
@@ -336,9 +336,9 @@ public:
 
             nav_msgs::msg::Path plan_path;
 
-            for (std::size_t path_idx = 0; path_idx < pth->getStateCount(); path_idx++)
+            for (std::size_t path_idx = 0; path_idx < path_smooth->getStateCount(); path_idx++)
 			{
-				const ob::SE3StateSpace::StateType *se3state = pth->getState(path_idx)->as<ob::SE3StateSpace::StateType>();
+				const ob::SE3StateSpace::StateType *se3state = path_smooth->getState(path_idx)->as<ob::SE3StateSpace::StateType>();
 
 	            // extract the first component of the state and cast it to what we expect
 				const ob::RealVectorStateSpace::StateType *pos = se3state->as<ob::RealVectorStateSpace::StateType>(0);
@@ -347,7 +347,7 @@ public:
 				const ob::SO3StateSpace::StateType *rot = se3state->as<ob::SO3StateSpace::StateType>(1);
                 geometry_msgs::msg::PoseStamped path_pose;
     
-                path_pose.header.frame_id = "odom";
+                path_pose.header.frame_id = "map";
                 path_pose.header.stamp = this->now();
                 path_pose.pose.position.x = pos->values[0];
 				path_pose.pose.position.y = pos->values[1];
@@ -360,7 +360,7 @@ public:
                 plan_path.poses.push_back(path_pose);
 			}
 
-            plan_path.header.frame_id = "odom";
+            plan_path.header.frame_id = "map";
             plan_path.header.stamp = this->now();
             path_pub->publish(plan_path);
 			
@@ -457,7 +457,7 @@ private:
 
     void goal_callback(const geometry_msgs::msg::PoseStamped::SharedPtr goal_msg)
     {
-        this->setGoal(goal_msg->pose.position.x, goal_msg->pose.position.y, goal_msg->pose.position.z);
+        this->setGoal(goal_msg->pose.position.x, goal_msg->pose.position.y, 1.591356);
     }
 
     rclcpp::Subscription<octomap_msgs::msg::Octomap>::SharedPtr octomap_subscription;

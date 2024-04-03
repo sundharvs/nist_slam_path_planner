@@ -2,3 +2,5 @@ build/
 install/
 log/
 cmake-build-debug/
+.vscode
+.idea
